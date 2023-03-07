@@ -1,0 +1,22 @@
+- name: Setup mongodb YUM repo file
+  ansible.builtin.copy:
+    src: mongodb.repo
+    dest: /etc/yum.repos.d/mongo.repo 
+
+- name: Install mangodb
+  ansible.builtin.yum:
+    name: mongodb-org
+    state: installed
+
+- name: Update Mongodb Listen address
+  ansible.builtin.replace:
+    path: /etc/mongod.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+
+- name: Start mangodb service
+  ansible.builtin.systemd:
+    name: mongod
+    state: started
+    enabled: yes
+    
