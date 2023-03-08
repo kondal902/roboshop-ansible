@@ -3,20 +3,20 @@
     src: mysql.repo 
     dest: /etc/yum.repos.d/mysql.repo
 
-#- name: Enable & Install Redis
-#  ansible.builtin.dnf:
-#    name: "@redis:remi-6.2"
-#    state: installed
-#    
-#- name: Update Redis Listen address
-#  ansible.builtin.replace:
-#    path: /etc/redis.conf
-#    regexp: '127.0.0.1'
-#    replace: '0.0.0.0'
-#
-#- name: Start Redis
-#  ansible.builtin.systemd:
-#    name: redis
-#    state: started
-#    enabled: yes
+- name: Disable MySQL 8
+  ansible.builtin.shell: dnf module disable mysql -y 
+    
+- name: Install MySQL 5.7
+  ansible.builtin.yum:
+    name: mysql-community-server
+    state: installed
+
+- name: Start MySQL Service
+  ansible.builtin.systemd:
+    name: mysqld
+    state: started
+    enabled: yes
+
+- name: Set Root Password
+  ansible.builtin.shell: mysql_secure_installation --set-root-pass Roboshop@1
         
