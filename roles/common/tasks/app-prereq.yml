@@ -1,14 +1,14 @@
 - name: Create Application user
-  ansible.builtn.user:
+  ansible.builtin.user:
    name: roboshop
 
 - name: Delete old Directory
-  ansible.builtn.file:
+  ansible.builtin.file:
    path: /app
    state:  absent
 
 - name: Create app directory
-  ansible.builtn.file:
+  ansible.builtin.file:
     path: /app
     state: directory  
 
