@@ -1,0 +1,22 @@
+- name: Setup Mysql Repo
+  ansible.builtin.cooy:
+    src: mysql.repo 
+    dest: /etc/yum.repos.d/mysql.repo
+
+#- name: Enable & Install Redis
+#  ansible.builtin.dnf:
+#    name: "@redis:remi-6.2"
+#    state: installed
+#    
+#- name: Update Redis Listen address
+#  ansible.builtin.replace:
+#    path: /etc/redis.conf
+#    regexp: '127.0.0.1'
+#    replace: '0.0.0.0'
+#
+#- name: Start Redis
+#  ansible.builtin.systemd:
+#    name: redis
+#    state: started
+#    enabled: yes
+        
