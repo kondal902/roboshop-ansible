@@ -5,5 +5,5 @@
 
 - name: Enable & Install Redis
   ansible.builtin.dnf:
-    name: @redis:remis-6.2
+    name: "@redis:remis-6.2"
     state: installed
