@@ -3,7 +3,7 @@
   block:
     - name: Setup MongoDB repo file
       ansible.builtin.copy:
-        src: mongo.repo
+        src: mongodb.repo
         dest: /etc/yum.repos.d/mongodb.repo        
     
     - name: Install MongoDB Client
